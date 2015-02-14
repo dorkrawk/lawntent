@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214073734) do
+ActiveRecord::Schema.define(version: 20150214081619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,40 @@ ActiveRecord::Schema.define(version: 20150214073734) do
 
   add_index "field_values", ["post_id"], name: "index_field_values_on_post_id", using: :btree
   add_index "field_values", ["template_field_id"], name: "index_field_values_on_template_field_id", using: :btree
+
+  create_table "post_collections", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_templates", force: :cascade do |t|
+    t.integer  "post_collection_id"
+    t.string   "title"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "collection_id"
+    t.integer  "template_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "posts", ["collection_id"], name: "index_posts_on_collection_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "template_fields", force: :cascade do |t|
+    t.integer  "post_template_id"
+    t.string   "label"
+    t.string   "field_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "template_fields", ["post_template_id"], name: "index_template_fields_on_post_template_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
