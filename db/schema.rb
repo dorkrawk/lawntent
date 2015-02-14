@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213034036) do
+ActiveRecord::Schema.define(version: 20150214073734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "field_values", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "template_field_id"
+    t.string   "field_type"
+    t.text     "text_value"
+    t.string   "string_value"
+    t.boolean  "boolean_value"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "field_values", ["post_id"], name: "index_field_values_on_post_id", using: :btree
+  add_index "field_values", ["template_field_id"], name: "index_field_values_on_template_field_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
