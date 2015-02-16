@@ -13,10 +13,15 @@ unless User.where(email: "admin@lawntent.com").first
   puts ""
 end
 
-puts "** Create Simple Blog Post Collection **"
-blog = PostCollection.where(title: "Blog").first_or_create
+unless PostCollection.where(title: "Blog").first
+  puts "** Create Simple Blog Post Collection **"
+  blog = PostCollection.create! :title => "Blog"
+end
 
-puts "** Create Simple Blog Post Template **"
-template = PostTemplate.where(title: "Blog Post", post_collection: blog).first_or_create
-title_field = TemplateField.where(post_template: template, label: "title", field_type: "text").first_or_create
-content_field = TemplateField.where(post_template: template, label: "content", field_type: "textblock").first_or_create
+unless PostTemplate.where(title: "Blog Post").first
+  puts "** Create Simple Blog Post Template **"
+  template = PostTemplate.create! :title => "Blog Post", :post_collection => blog
+
+  title_field = TemplateField.create! :post_template => template, :label => "title", :field_type => "text"
+  content_field = TemplateField.create! :post_template => template, :label => "content", :field_type => "textblock"
+end
