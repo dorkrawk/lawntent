@@ -9,7 +9,7 @@ class FieldValue < ActiveRecord::Base
   belongs_to :template_field
 
   def value
-    self.send(VALUE_FIELDS[field_type])
+    self.send(VALUE_FIELDS[field_type.to_sym])
   end
 
   def self.field_types
