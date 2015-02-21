@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get '/post_collections/:id/new_post' => 'post_collections#new_post'
+
   get '/:collection_id/posts/:post_id' => 'posts#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

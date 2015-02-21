@@ -1,0 +1,8 @@
+%h1= @post_collection.title
+%h2 new post
+
+= simple_form_for :post do |f|
+  - @post_fields.each do |post_field|
+    = f.label post_field.template_field.label
+    = f.input :post_field, :input_html => { id: "field_value_#{post_field.template_field.id}", name: "field_value[#{post_field.template_field.id}]" }
+  = f.submit
