@@ -1,0 +1,8 @@
+%h1= "Post #{@post.id}"
+%h3= "by: #{@post.user.email}"
+%h3= "created: #{@post.created_at}"
+
+- @post.field_values.each do |field_value|
+  %b= "#{field_value.template_field.label}:"
+  = field_value.value
+  %br
