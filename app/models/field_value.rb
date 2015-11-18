@@ -5,6 +5,12 @@ class FieldValue < ActiveRecord::Base
     boolean: :boolean_value
   }
 
+  INPUT_TYPES = {
+    textblock: :text,
+    text: :string,
+    boolean: :boolean
+  }
+
   belongs_to :post, touch: true
   belongs_to :template_field
 

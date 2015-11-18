@@ -4,7 +4,7 @@
 = simple_form_for :post, url: post_collections_create_post_path do |f|
   - @post_fields.each do |post_field|
     = f.label post_field.template_field.label
-    = f.input :post_field, :input_html => { id: "field_value_#{post_field.template_field.id}", name: "field_values[#{post_field.template_field.id}]" }
+    = f.input :post_field, label: false, as: FieldValue::INPUT_TYPES[post_field.template_field.field_type.to_sym], :input_html => { id: "field_value_#{post_field.template_field.id}", name: "field_values[#{post_field.template_field.id}]" }
   = f.input :post_collection_id, :as => :hidden, :input_html => { :value => @post_collection.id }
   = f.input :post_template_id, :as => :hidden, :input_html => { :value => @template.id }
   = f.input :user_id, :as => :hidden, :input_html => { :value => @user.id }
