@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
 
-  has_many :field_values
+  #has_many :field_values
   has_one :post_template
   belongs_to :user
+  belongs_to :post_collection
 
   def get_content
     content = {}
