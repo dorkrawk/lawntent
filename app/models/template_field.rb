@@ -1,17 +1,15 @@
 class TemplateField < ActiveRecord::Base
 
-  FIELD_TYPES = OpenStruct.new(
+  FIELD_TYPES = {
     textblock: 'Textblock',
     text: 'Text',
     boolean: 'Boolean',
     image: 'Image'
-  )
-
-  INPUT_TYPES = {
-    textblock: :text,
-    text: :string,
-    boolean: :boolean
   }
 
   belongs_to :post_template
+
+  def characteristics
+    self.class.const_get("#{FIELD_TYPES[field_type.to_sym]}Field")
+  end
 end

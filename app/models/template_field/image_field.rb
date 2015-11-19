@@ -1,7 +1,7 @@
 class TemplateField
-  module ImageField < BaseField
+  class ImageField < BaseField
 
-    def input_types
+    def self.input_types
       [:text] # [:filepicker]
     end
 

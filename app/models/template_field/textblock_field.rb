@@ -1,8 +1,8 @@
 class TemplateField
-  class BaseField
+  class TextblockField < BaseField
 
     def self.input_types
-      [:text]
+      [:textarea]
     end
 
   end

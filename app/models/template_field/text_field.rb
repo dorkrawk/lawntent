@@ -1,4 +1,4 @@
 class TemplateField
-  module TextField < BaseField
+  class TextField < BaseField
   end
 end

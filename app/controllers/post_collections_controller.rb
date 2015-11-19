@@ -4,7 +4,7 @@ class PostCollectionsController < ApplicationController
     @user = User.first # for now
     @post_collection = PostCollection.find(params[:id])
     @template = @post_collection.template
-    @post_fields = @template.template_fields.map { |tf| tf.get_new_field_value }
+    #@post_fields = @template.template_fields.map { |tf| tf.get_new_field_value }
   end
 
   def create_post

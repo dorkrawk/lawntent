@@ -1,10 +1,17 @@
 class Post < ActiveRecord::Base
 
-  has_one :post_template
   belongs_to :user
   belongs_to :post_collection
 
   alias_attribute :author, :user
+
+  def template
+    post_collection.template
+  end
+
+  def content_hash
+    content.to_h
+  end
 
   def get_content
     additional_fields = {
@@ -14,6 +21,6 @@ class Post < ActiveRecord::Base
       created_at: created_at
     }
 
-    content.to_h.merge(additional_fields)
+    content_hash.merge(additional_fields)
   end
 end

@@ -1,7 +1,7 @@
 class TemplateField
-  module BooleanField < BaseField
+  class BooleanField < BaseField
 
-    def input_types
+    def self.input_types
       [:checkbox]
     end
 
