@@ -1,8 +1,13 @@
 class PostCollectionsController < ApplicationController
 
+  before_action :get_post_collection, except: [:create_post]
+
+  def posts
+    @posts = @post_collection.posts
+  end
+
   def new_post
     @user = User.first # for now
-    @post_collection = PostCollection.find(params[:id])
     @template = @post_collection.template
     #@post_fields = @template.template_fields.map { |tf| tf.get_new_field_value }
   end
@@ -28,5 +33,9 @@ class PostCollectionsController < ApplicationController
 
   def post_collection_params
     params.require(:post_collection).permit(:title)
+  end
+
+  def get_post_collection
+    @post_collection = PostCollection.find(params[:id])
   end
 end

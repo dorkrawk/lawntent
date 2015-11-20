@@ -6,7 +6,11 @@ class Post < ActiveRecord::Base
   alias_attribute :author, :user
 
   def template
-    post_collection.template
+    @template ||= post_collection.template
+  end
+
+  def description
+    content_hash[template.descriptor_field.label]
   end
 
   def content_hash
