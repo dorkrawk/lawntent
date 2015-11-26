@@ -5,6 +5,10 @@ class Post < ActiveRecord::Base
 
   alias_attribute :author, :user
 
+  validates :post_collection, presence: true
+  validates :user, presence: true
+  validate :content_must_have_template_fields, unless: Proc.new { |p| p.content.empty? }
+
   def template
     @template ||= post_collection.template
   end
@@ -26,5 +30,17 @@ class Post < ActiveRecord::Base
     }
 
     content_hash.merge(additional_fields)
+  end
+
+  def content_must_have_template_fields
+    content_fields = template.template_fields.map { |f| f.label }
+    unless content_hash.keys == content_fields
+      errors.add(:content, "must have template fields")
+    end
+  end
+
+  def content_valid?
+    content_fields = template.template_fields.map { |f| f.label }
+    content_hash.keys == content_fields
   end
 end
