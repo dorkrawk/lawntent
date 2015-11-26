@@ -1,0 +1,5 @@
+%h1 Lawn Tent
+%h2= "Welcome!"
+
+- @post_collections.each do |c|
+  = link_to c.title, c

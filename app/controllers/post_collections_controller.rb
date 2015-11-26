@@ -2,7 +2,7 @@ class PostCollectionsController < ApplicationController
 
   before_action :get_post_collection, except: [:create_post]
 
-  def posts
+  def show
     @posts = @post_collection.posts
   end
 
@@ -13,7 +13,7 @@ class PostCollectionsController < ApplicationController
   end
 
   def create_post
-    post = Post.new(post_collection_id: params[:post][:post_collection_id], 
+    post = Post.new(post_collection_id: params[:post][:post_collection_id],
                     post_template_id: params[:post][:post_template_id],
                     user_id: params[:post][:user_id])
     post.transaction do

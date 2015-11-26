@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get '/post_collections/:id/new_post' => 'post_collections#new_post'
-  get '/post_collections/:id' => 'post_collections#posts'
+  root 'pages#index'
+
+  resources :post_collections
+  get '/post_collections/:id/new_post' => 'post_collections#new_post', as: :new_post
+  # get '/post_collections/:id' => 'post_collections#posts'
   post '/post_collections/create_post' => 'post_collections#create_post'
 
   get '/:collection_id/posts/:post_id' => 'posts#show'

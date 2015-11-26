@@ -1,0 +1,11 @@
+%h1= @post_collection.title
+
+- @posts.each do |post|
+  %li
+    = link_to post.description, post_preview_path(@post_collection, post)
+    by
+    = post.author.try(:email)
+    -
+    = post.created_at.strftime("%b %e %Y %l:%M%P")
+
+= button_to "Create New Post", new_post_path(@post_collection), method: :get
