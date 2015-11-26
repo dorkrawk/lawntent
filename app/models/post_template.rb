@@ -4,6 +4,6 @@ class PostTemplate < ActiveRecord::Base
   belongs_to :post_collection
 
   def descriptor_field
-    @descriptor_field ||= template_fields.find(descriptor_field_id)
+    @descriptor_field ||= template_fields.find_by(id: descriptor_field_id) || template_fields.first
   end
 end

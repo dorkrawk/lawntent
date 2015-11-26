@@ -25,5 +25,5 @@ unless PostTemplate.where(title: "Blog Post").first
   title_field = TemplateField.create! :post_template => template, :label => "title", :field_type => "text"
   content_field = TemplateField.create! :post_template => template, :label => "content", :field_type => "textblock"
 
-  template.descriptor_field_id = title_field.id
+  template.update_attribute(:descriptor_field_id, title_field.id)
 end
