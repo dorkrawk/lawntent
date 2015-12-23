@@ -1,6 +1,6 @@
 %h1= "Post #{@post.id}"
 %h3= "by: #{@post.author.email}"
-%h3= "created: #{@post.created_at}"
+%h3= "created: #{@post.created_at.strftime("%b %e %Y %l:%M%P")}"
 
 - @post.content_hash.each do |label, value|
   %b= "#{label}:"

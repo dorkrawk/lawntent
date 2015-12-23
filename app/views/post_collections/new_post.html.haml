@@ -3,9 +3,9 @@
 
 = simple_form_for :post, url: post_collections_create_post_path do |f|
   - @template.template_fields.each do |template_field|
-    = f.label template_field.label
-    = text_field_tag :test
+    = f.input template_field.label, input_html: { name: "post[field_values][#{template_field.label}]"}
 
-  = f.input :post_template_id, :as => :hidden, :input_html => { :value => @template.id }
-  = f.input :user_id, :as => :hidden, :input_html => { :value => @user.id }
+  = f.hidden_field :post_template_id, value: @template.id
+  = f.hidden_field :user_id, value: @user.id
+  = f.hidden_field :post_collection_id, value: @post_collection.id
   = f.submit
