@@ -1,0 +1,13 @@
+%h2 Templates
+%h3= @template.title
+
+- @template.template_fields.each do |field|
+  %li
+    = "#{field.label}: (#{field.field_type})"
+    = "[descriptor field]" if field.descriptor_field?
+
+%h4 Used In
+
+-@template.post_collections.each do |post_collection|
+  %li
+    = link_to post_collection.title, post_collection

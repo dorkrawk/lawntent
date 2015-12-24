@@ -1,11 +1,11 @@
 class PostCollection < ActiveRecord::Base
 
   has_many :posts
-  has_many :post_templates
+  belongs_to :post_template
 
   alias_attribute :name, :title
 
   def template
-    post_templates.first
+    post_template
   end
 end

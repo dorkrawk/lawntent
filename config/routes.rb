@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/:collection_id/posts/:post_id' => 'posts#show'
   get '/:collection_id/posts/:post_id/preview' => 'posts#preview', as: :post_preview
 
+  resources :post_templates
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

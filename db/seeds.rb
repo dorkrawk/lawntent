@@ -12,11 +12,7 @@ unless User.where(email: "admin@lawntent.com").first
   puts "(User #{user.email} added with simple password)"
   puts ""
 end
-
-unless PostCollection.where(title: "Blog").first
-  puts "** Create Simple Blog Post Collection **"
-  blog = PostCollection.create! :title => "Blog"
-end
+user = User.where(email: "admin@lawntent.com").first
 
 unless PostTemplate.where(title: "Blog Post").first
   puts "** Create Simple Blog Post Template **"
@@ -26,4 +22,10 @@ unless PostTemplate.where(title: "Blog Post").first
   content_field = TemplateField.create! :post_template => template, :label => "content", :field_type => "textblock"
 
   template.update_attribute(:descriptor_field_id, title_field.id)
+end
+blog_post_template = PostTemplate.where(title: "Blog Post").first
+
+unless PostCollection.where(title: "Blog").first
+  puts "** Create Simple Blog Post Collection **"
+  blog = PostCollection.create! :title => "Blog" :post_template => blog_post_template
 end

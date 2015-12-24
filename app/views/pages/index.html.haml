@@ -1,5 +1,8 @@
 %h2= "Welcome!"
 
+.side_nav
+  = link_to "Templates", post_templates_path
+
 - @post_collections.each do |c|
   = link_to c.title, c
   = pluralize c.posts.count, "post"
