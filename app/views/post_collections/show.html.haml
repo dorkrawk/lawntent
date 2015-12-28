@@ -6,7 +6,7 @@
 = button_to "Create New Post", new_post_path(@post_collection), method: :get
 - @posts.each do |post|
   %li
-    = link_to post.description, post_preview_path(@post_collection, post)
+    = link_to post.description, post_path(@post_collection, post)
     by
     = post.author.try(:email)
     -
