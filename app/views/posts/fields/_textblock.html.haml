@@ -1,0 +1,3 @@
+%textarea{ id: "#{template_field.label}_field", name: "post[field_values][#{template_field.label}]", value: template_field.try(:value)}
+:javascript
+  var #{template_field.label}_simplemde = new SimpleMDE({ element: $("##{template_field.label}_field")[0], autoDownloadFontAwesome: false });

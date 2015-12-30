@@ -24,7 +24,7 @@ class PostCollectionsController < ApplicationController
 
     if post.save
       flash['notice'] = "Post created"
-      redirect_to post_preview_path(post.post_collection_id, post.id)
+      redirect_to post_path(post.post_collection_id, post.id)
     else
       flash['error'] = "Error creating post: #{post.errors.full_messages.to_sentence}"
     end
