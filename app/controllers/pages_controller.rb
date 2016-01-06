@@ -4,4 +4,7 @@ class PagesController < ApplicationController
     @post_collections = PostCollection.all
   end
 
+  def login
+  end
+
 end

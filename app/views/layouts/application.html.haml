@@ -7,6 +7,11 @@
     = csrf_meta_tags
   %body
     %h1 Lawn Tent
+    .user_stuff
+      - if user_signed_in?
+        = "Hi #{current_user.email}!"
+      - else
+        = link_to "login", login_path
     %p.notice= notice
     %p.alert= alert
 

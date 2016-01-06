@@ -1,5 +1,5 @@
 class PostCollectionsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :get_post_collection, except: [:create_post]
 
   def show
@@ -7,7 +7,7 @@ class PostCollectionsController < ApplicationController
   end
 
   def new_post
-    @user = User.first # for now
+    @user = current_user
     @template = @post_collection.template
   end
 

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @post = post_find(params[:collection_id], params[:post_id])
@@ -12,7 +13,7 @@ class PostsController < ApplicationController
     get_post_collection
     @post = Post.new(post_collection_id: @post_collection.id,
                      post_template_id: @post_collection.post_template_id,
-                     user_id: User.first.id)
+                     user_id: current_user.id)
   end
 
   private

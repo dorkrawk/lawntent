@@ -1,4 +1,5 @@
 class PostTemplatesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @templates = PostTemplate.all
