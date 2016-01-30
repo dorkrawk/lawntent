@@ -1,6 +1,6 @@
 %h3 Sign In
 
 = form_for(:user, :url => user_session_path ) do |f|
-  = f.text_field :login, placeholder: "email", :class => "form-control"
+  = f.text_field :email, placeholder: "email", :class => "form-control"
   = f.password_field :password, placeholder: "password", :class => "login_password form-control"
   = f.submit 'sign in', :class => "btn btn-primary"
