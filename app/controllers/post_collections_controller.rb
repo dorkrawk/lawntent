@@ -3,7 +3,7 @@ class PostCollectionsController < ApplicationController
   before_action :get_post_collection, except: [:create_post]
 
   def show
-    @posts = @post_collection.posts
+    @posts = @post_collection.posts.order(created_at: :desc)
   end
 
   def new_post

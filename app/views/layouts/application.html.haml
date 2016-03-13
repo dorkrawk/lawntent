@@ -6,16 +6,19 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %h1 Lawn Tent
-    .user_stuff
-      - if user_signed_in?
-        = "Hi #{current_user.email}!"
-      - else
-        = link_to "login", login_path
-    %p.notice= notice
-    %p.alert= alert
+    %nav.navbar.navbar-default
+      .navbar-brand
+        = link_to "Lawn Tent", root_path
+      .nav.navbar-right
+        - if user_signed_in?
+          = "Hi #{current_user.email}!"
+        - else
+          = link_to "login", login_path
+    .container
+      .row
+        %p.notice= notice
+        %p.alert= alert
 
-    = yield
-
-    %br
-    2015 Lawntent
+        = yield
+      .row.text-center
+        = "#{Date.today.year} Lawntent"
