@@ -2,6 +2,9 @@
 .small
   template:
   = link_to @post_collection.template.title, @post_collection.template
+.small
+  post count:
+  = @posts.count
 
 = button_to "Create New Post", new_post_path(@post_collection), :class => "btn btn-lg btn-default", :method => :get
 %br
@@ -10,4 +13,4 @@
     %li.list-group-item
       %h4= link_to post.description, post_path(@post_collection, post)
       .post_date= post.created_at.strftime("%b %e %Y %l:%M%P")
-      .post_author= post.author.try(:email)
+      .post_author= "by #{post.author.try(:email)}"

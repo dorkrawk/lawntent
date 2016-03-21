@@ -9,7 +9,7 @@
     %nav.navbar.navbar-default
       .navbar-brand
         = link_to "Lawn Tent", root_path
-      .nav.navbar-right
+      .nav.navbar-right.navbar-brand
         - if user_signed_in?
           = "Hi #{current_user.email}!"
         - else
@@ -20,5 +20,7 @@
         %p.alert= alert
 
         = yield
+      %hr
       .row.text-center
         = "#{Date.today.year} Lawntent"
+      

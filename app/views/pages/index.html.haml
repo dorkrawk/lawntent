@@ -1,8 +1,14 @@
-%h2= "Welcome!"
-
-.side_nav
-  = link_to "Templates", post_templates_path
-
-- @post_collections.each do |c|
-  = link_to c.title, c
-  = pluralize c.posts.count, "post"
+.row
+  .col-md-8
+    - @post_collections.each do |c|
+      %h2= link_to c.title, c
+      .small
+        last post:
+        = c.posts.last.created_at.strftime("%b %e %Y %l:%M%P")
+      .small
+        = pluralize c.posts.count, "post"
+  .col-md-4
+    %h3
+      = button_to "Create New Collection", nil, :class => "btn btn-lg btn-default"
+    %h3
+      = link_to "Templates", post_templates_path

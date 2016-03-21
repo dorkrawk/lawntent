@@ -1,7 +1,14 @@
-%h1= "Post #{@post.id}"
-%h3= "by: #{@post.author.email}"
-%h3= "created: #{@post.created_at.strftime("%b %e %Y %l:%M%P")}"
-
+%h1= link_to @post.post_collection.title, @post.post_collection
+%h2= @post.description
+.small
+  = "created: #{@post.created_at.strftime("%b %e %Y %l:%M%P")}"
+.small
+  = "updated: #{@post.updated_at.strftime("%b %e %Y %l:%M%P")}"
+.small
+  = "by: #{@post.author.email}"
+%br
+= button_to "Update", nil, :class => "btn btn-md btn-default"
+%br
 - @post.content_hash.each do |label, value|
   %b= "#{label}:"
   = value

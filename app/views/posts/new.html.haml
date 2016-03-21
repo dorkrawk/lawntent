@@ -1,4 +1,4 @@
-%h1= @post.post_collection.title
+%h1= link_to @post.post_collection.title, @post.post_collection
 %h2 new post
 
 = render partial: "form"
