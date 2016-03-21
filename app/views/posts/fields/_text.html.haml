@@ -1,1 +1,4 @@
-= text_field_tag "#{template_field.label}_field", template_field.try(:value), name: "post[field_values][#{template_field.label}]", placeholder: template_field.label
+.row
+  .col-md-6
+    .form_group
+      = text_field_tag "#{template_field.label}_field", template_field.try(:value), name: "post[field_values][#{template_field.label}]", placeholder: template_field.label, :class => "form-control"

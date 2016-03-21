@@ -1,3 +1,32 @@
+@import "colors";
+
+.navbar-default {
+  background-color: $lawntent-green;
+  border-color: $lawntent-white;
+}
+
+.navbar-default .navbar-brand {
+  color: $lawntent-white;
+}
+
+.navbar-brand a {
+  color: $lawntent-white;
+}
+
+.navbar-brand a:hover {
+  text-decoration: none;
+  color: $lawntent-light-green;
+}
+
+a {
+  color: $lawntent-green;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $lawntent-light-green;
+}
+
 .navbar-right {
-  margin-right: 0px !important; // uggg hackey
+  margin-right: 0px;
 }

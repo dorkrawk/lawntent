@@ -3,13 +3,14 @@
   %head
     %title= "Lawntent"
     = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default
+    %nav.lawntent-header.navbar.navbar-default
       .navbar-brand
         = link_to "Lawn Tent", root_path
-      .nav.navbar-right.navbar-brand
+      .nav.navbar-right.navbar-brand.welcome-message
         - if user_signed_in?
           = "Hi #{current_user.email}!"
         - else
@@ -23,4 +24,9 @@
       %hr
       .row.text-center
         = "#{Date.today.year} Lawntent"
-      
+      .row.text-center
+        %i.fa.fa-code
+        with
+        %i.fa.fa-beer
+        by
+        = link_to "Dave", "http://dinosaurseateverybody.com"
