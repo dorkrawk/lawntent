@@ -1,0 +1,6 @@
+.row
+  .col-md-6
+    .form_group
+      %label{:for => "#{template_field.label}_field"}
+        = "#{template_field.label}: "
+      = file_field_tag "#{template_field.label}_field", name: "post[field_values][#{template_field.label}]", :class => "form-control"
