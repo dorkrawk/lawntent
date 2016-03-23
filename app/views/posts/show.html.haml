@@ -7,6 +7,7 @@
 .small
   = "by: #{@post.author.email}"
 %br
+= button_to "Preview JSON", post_path(@post.post_collection, @post, format: :json), :class => "btn btn-md btn-default", :method => :get
 = button_to "Update", nil, :class => "btn btn-md btn-default"
 %br
 - @post.content_hash.each do |label, value|
