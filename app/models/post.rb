@@ -34,8 +34,8 @@ class Post < ActiveRecord::Base
 
   def content_must_have_template_fields
     content_fields = template.template_fields.map { |f| f.label }
-    unless content_hash.keys == content_fields
-      errors.add(:content, "must have template fields")
+    unless content_hash.keys.to_set == content_fields.to_set
+      errors.add(:content, "must have all template fields")
     end
   end
 

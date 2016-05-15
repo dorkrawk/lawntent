@@ -1,4 +1,4 @@
-= simple_form_for @post, url: post_collections_create_post_path do |f|
+= simple_form_for @post, url: post_collections_create_post_path, html: {multipart: true} do |f|
   - @post.template.template_fields.each do |template_field|
     = render partial: "posts/fields/#{template_field.field_type}", locals: { template_field: template_field }
 
