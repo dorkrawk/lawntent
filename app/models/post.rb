@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :post_collection
+  has_many :post_images, dependent: :destroy
 
   alias_attribute :author, :user
 

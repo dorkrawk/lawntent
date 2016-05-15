@@ -10,7 +10,10 @@
 = button_to "Preview JSON", post_path(@post.post_collection, @post, format: :json), :class => "btn btn-md btn-default", :method => :get
 = button_to "Update", nil, :class => "btn btn-md btn-default"
 %br
-- @post.content_hash.each do |label, value|
-  %b= "#{label}:"
-  = value
+- @post.template.template_fields.each do |template_field|
+  %b= "#{template_field.label}:"
+  - if template_field.field_type == "image"
+    = image_tag @post.post_images.find_by(template_field_id: template_field.id).image.url(:small)
+  - else
+    = @post.content_hash[template_field.label]
   %br
