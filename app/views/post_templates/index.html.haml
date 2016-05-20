@@ -1,4 +1,5 @@
 %h2 Templates
 
+%ul
 - @templates.each do |template|
-  = link_to template.title, template
+  %li= link_to template.title, template

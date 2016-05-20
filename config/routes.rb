@@ -4,17 +4,14 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :post_collections
-  #get '/post_collections/:id/new_post' => 'post_collections#new_post', as: :new_post
-  # get '/post_collections/:id' => 'post_collections#posts'
+  resources :post_templates
+  get '/login' => 'pages#login', as: :login
   post '/post_collections/create_post' => 'post_collections#create_post'
 
   get '/:collection_id/posts/new' => 'posts#new', as: :new_post
   get '/:collection_id/:post_id' => 'posts#show', as: :post
   get '/:collection_id/posts/:post_id/preview' => 'posts#preview', as: :post_preview
 
-  resources :post_templates
-
-  get '/login' => 'pages#login', as: :login
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

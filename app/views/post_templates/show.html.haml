@@ -3,8 +3,9 @@
 
 - @template.template_fields.each do |field|
   %li
-    = "#{field.label}: (#{field.field_type})"
-    = "[descriptor field]" if field.descriptor_field?
+    %b= "#{field.label}:"
+    = "(#{field.field_type})"
+    %i= "[descriptor field]" if field.descriptor_field?
 
 %h4 Used In
 
