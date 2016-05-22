@@ -4,6 +4,10 @@ class PostCollectionsController < ApplicationController
 
   def show
     @posts = @post_collection.posts.order(created_at: :desc)
+    respond_to do |format|
+      format.html { @posts }
+      format.json { render json: @post_collection.description_hash }
+    end
   end
 
   def new_post

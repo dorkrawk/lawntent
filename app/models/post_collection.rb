@@ -8,4 +8,12 @@ class PostCollection < ActiveRecord::Base
   def template
     post_template
   end
+
+  def description_hash
+    {
+      title: title,
+      template: post_template_id,
+      post_count: posts.count
+    }
+  end
 end

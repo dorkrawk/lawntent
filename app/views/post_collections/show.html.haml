@@ -7,6 +7,7 @@
   = @posts.count
 
 = button_to "Create New Post", new_post_path(@post_collection), :class => "btn btn-lg btn-default", :method => :get
+= button_to "Preview JSON", post_collection_path(@post_collection, format: :json), :class => "btn btn-md btn-default", :method => :get
 %br
 %ul.list-group
   - @posts.each do |post|
