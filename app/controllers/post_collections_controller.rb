@@ -1,6 +1,6 @@
 class PostCollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_post_collection, except: [:create_post]
+  before_action :get_post_collection, except: [:new, :create, :create_post]
 
   def show
     @posts = @post_collection.posts.order(created_at: :desc)
@@ -10,9 +10,21 @@ class PostCollectionsController < ApplicationController
     end
   end
 
-  def new_post
-    @user = current_user
-    @template = @post_collection.template
+  def new
+    @post_templates_arrary = PostTemplate.all.map { |template| [template.title, template.id] }
+    @post_collection = PostCollection.new
+  end
+
+  def create
+    post_collection = PostCollection.new(post_collection_params)
+
+    if post_collection.save
+      flash['notice'] = "Post Collection created"
+      redirect_to post_collection
+    else
+      flash['alert'] = "Error creating post collection: #{post_collection.errors.full_messages.to_sentence}"
+      redirect_to :back
+    end
   end
 
   def create_post
@@ -55,7 +67,7 @@ class PostCollectionsController < ApplicationController
   private
 
   def post_collection_params
-    params.require(:post_collection).permit(:title)
+    params.require(:post_collection).permit(:title, :post_template_id)
   end
 
   def get_post_collection

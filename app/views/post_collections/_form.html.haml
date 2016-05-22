@@ -1,0 +1,13 @@
+= simple_form_for(@post_collection, :defaults => { :input_html => { :class => "form-control" }}) do |f|
+  .row
+    .col-md-6
+      .form_group
+        = f.input :title, placeholder: "title"
+  .row
+    .col-md-6
+      .form_group
+        = f.input :post_template_id, collection: @post_templates_arrary, placeholder: "post template"
+  .row
+    .col-md-6
+      .form_group
+        = f.submit "Create New Post Collection", :class => "btn btn-lg btn-default"

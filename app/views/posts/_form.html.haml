@@ -2,7 +2,6 @@
   - @post.template.template_fields.each do |template_field|
     = render partial: "posts/fields/#{template_field.field_type}", locals: { template_field: template_field }
 
-  = #f.input :test, input_html: { name: "post[field_values][test]", value: "this is a test", id: "test_md"}
   = f.hidden_field :post_template_id, value: @post.post_template_id
   = f.hidden_field :user_id, value: @post.user_id
   = f.hidden_field :post_collection_id, value: @post.post_collection_id

@@ -9,6 +9,6 @@
         = pluralize c.posts.count, "post"
   .col-md-4
     %h3
-      = button_to "Create New Collection", nil, :class => "btn btn-lg btn-default"
+      = button_to "Create New Collection", new_post_collection_path, :class => "btn btn-lg btn-default", :method => :get
     %h3
       = link_to "Templates", post_templates_path
