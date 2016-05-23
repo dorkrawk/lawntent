@@ -1,17 +1,19 @@
 %h1= @post_collection.title
-.small
-  template:
-  = link_to @post_collection.template.title, @post_collection.template
-.small
-  post count:
-  = @posts.count
+.row
+  .col-md-3
+    .small
+      template:
+      = link_to @post_collection.template.title, @post_collection.template
+    .small
+      post count:
+      = @posts.count
 
-= button_to "Create New Post", new_post_path(@post_collection), :class => "btn btn-lg btn-default", :method => :get
-= button_to "Preview JSON", post_collection_path(@post_collection, format: :json), :class => "btn btn-md btn-default", :method => :get
-%br
-%ul.list-group
-  - @posts.each do |post|
-    %li.list-group-item
-      %h4= link_to post.description, post_path(@post_collection, post)
-      .post_date= post.created_at.strftime("%b %e %Y %l:%M%P")
-      .post_author= "by #{post.author.try(:email)}"
+    = button_to "Create New Post", new_post_path(@post_collection), :class => "btn btn-lg btn-default", :method => :get
+    = button_to "Preview JSON", post_collection_path(@post_collection, format: :json), :class => "btn btn-lg btn-default", :method => :get
+  .col-md-9
+    %ul.list-group
+      - @posts.each do |post|
+        %li.list-group-item
+          %h4= link_to post.description, post_path(@post_collection, post)
+          .post_date= post.created_at.strftime("%b %e %Y %l:%M%P")
+          .post_author= "by #{post.author.try(:email)}"

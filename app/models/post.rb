@@ -15,7 +15,11 @@ class Post < ActiveRecord::Base
   end
 
   def description
-    content_hash[template.descriptor_field.label]
+    if template.descriptor_field
+      content_hash[template.descriptor_field.label]
+    else
+      created_at
+    end
   end
 
   def content_hash

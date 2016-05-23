@@ -11,6 +11,8 @@ class TemplateField < ActiveRecord::Base
 
   validates_uniqueness_of :label, :scope => :post_template_id
 
+  scope :by_type, -> (type) { where(field_type: type) }
+
   def characteristics
     self.class.const_get("#{FIELD_TYPES[field_type.to_sym]}Field")
   end

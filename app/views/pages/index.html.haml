@@ -2,11 +2,15 @@
   .col-md-8
     - @post_collections.each do |c|
       %h2= link_to c.title, c
-      .small
-        last post:
-        = c.posts.last.created_at.strftime("%b %e %Y %l:%M%P") if c.posts.any?
-      .small
-        = pluralize c.posts.count, "post"
+      - if c.posts.any?
+        .small
+          last post:
+          = c.posts.last.created_at.strftime("%b %e %Y %l:%M%P")
+        .small
+          = pluralize c.posts.count, "post"
+      - else
+        .small
+          write your first post!
   .col-md-4
     %h3
       = button_to "Create New Collection", new_post_collection_path, :class => "btn btn-lg btn-default", :method => :get

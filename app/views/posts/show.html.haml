@@ -1,19 +1,26 @@
 %h1= link_to @post.post_collection.title, @post.post_collection
-%h2= @post.description
-.small
-  = "created: #{@post.created_at.strftime("%b %e %Y %l:%M%P")}"
-.small
-  = "updated: #{@post.updated_at.strftime("%b %e %Y %l:%M%P")}"
-.small
-  = "by: #{@post.author.email}"
-%br
-= button_to "Preview JSON", post_path(@post.post_collection, @post, format: :json), :class => "btn btn-md btn-default", :method => :get
-= button_to "Update", nil, :class => "btn btn-md btn-default"
-%br
-- @post.template.template_fields.each do |template_field|
-  %b= "#{template_field.label}:"
-  - if template_field.field_type == "image"
-    = image_tag @post.post_images.find_by(template_field_id: template_field.id).image.url(:small)
-  - else
-    = @post.content_hash[template_field.label]
-  %br
+.row
+  .col-md-12
+    %h2= @post.description
+.row
+  .col-md-3
+    .small
+      = "created: #{@post.created_at.strftime("%b %e %Y %l:%M%P")}"
+    .small
+      = "updated: #{@post.updated_at.strftime("%b %e %Y %l:%M%P")}"
+    .small
+      = "by: #{@post.author.email}"
+    %br
+    = button_to "Preview JSON", post_path(@post.post_collection, @post, format: :json), :class => "btn btn-lg btn-default", :method => :get
+    = button_to "Update", nil, :class => "btn btn-lg btn-default"
+  .col-md-9
+    %table.table
+      - @post.template.template_fields.each do |template_field|
+        %tr
+          %td
+            %b= "#{template_field.label}"
+          %td
+            - if template_field.field_type == "image"
+              = image_tag @post.post_images.find_by(template_field_id: template_field.id).image.url(:small)
+            - else
+              = @post.content_hash[template_field.label]
