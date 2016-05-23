@@ -1,0 +1,15 @@
+= simple_form_for(@template, :defaults => { :input_html => { :class => "form-control" }}) do |f|
+  .row
+    .col-md-6
+      .form_group
+        = f.input :title, placeholder: "title"
+  %h3 fields
+  .template_fields
+    = f.fields_for(:template_fields, :defaults => { :input_html => { :class => "form-control" }}) do |ff|
+      = render 'template_field_fields', f: ff
+    = link_to_add_association 'add field', f, :template_fields
+
+  .row
+    .col-md-6
+      .form_group
+        = f.submit "Create New Post Template", :class => "btn btn-lg btn-default"

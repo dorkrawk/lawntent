@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'haml'
 gem 'simple_form'
+gem 'cocoon'
 gem 'bootstrap-sass'
 gem "paperclip", "~> 4.3"
 

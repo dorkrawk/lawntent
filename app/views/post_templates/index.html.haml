@@ -1,4 +1,5 @@
 %h2 Templates
+= button_to "Create Post Template", new_post_template_path, :class => "btn btn-lg btn-default", :method => :get
 
 %ul
 - @templates.each do |template|

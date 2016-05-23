@@ -1,0 +1,7 @@
+.row.nested-fields
+  .col-md-6
+    .form_group
+      = f.input :label
+      = f.input :field_type, collection: @template_field_type_array
+      %br
+      = link_to_remove_association "remove field", f
