@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
     if template.descriptor_field
       content_hash[template.descriptor_field.label]
     else
-      created_at
+      created_at.strftime("%b %e %Y %l:%M%P")
     end
   end
 
@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
   end
 
   def content_must_have_template_fields
-    content_fields = template.template_fields.map { |f| f.label }
+    content_fields = template.template_fields.map { |f| f.clean_label }
     unless content_hash.keys.to_set == content_fields.to_set
       errors.add(:content, "must have all template fields")
     end

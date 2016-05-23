@@ -20,4 +20,8 @@ class TemplateField < ActiveRecord::Base
   def descriptor_field?
     id == post_template.descriptor_field_id
   end
+
+  def clean_label
+    label.parameterize
+  end
 end

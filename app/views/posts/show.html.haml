@@ -22,5 +22,7 @@
           %td
             - if template_field.field_type == "image"
               = image_tag @post.post_images.find_by(template_field_id: template_field.id).image.url(:small)
+            - elsif template_field.field_type == "boolean"
+              = @post.content_hash[template_field.clean_label].to_s
             - else
-              = @post.content_hash[template_field.label]
+              = @post.content_hash[template_field.clean_label]

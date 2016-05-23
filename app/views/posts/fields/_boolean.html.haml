@@ -1,0 +1,6 @@
+.row
+  .col-md-6
+    .form_group
+      %label{:for => "#{template_field.clean_label}_field"}
+        = "#{template_field.clean_label}: "
+      = check_box_tag "#{template_field.clean_label}_field", true, !!template_field.try(:value), name: "post[field_values][#{template_field.clean_label}]", :class => "form-control"

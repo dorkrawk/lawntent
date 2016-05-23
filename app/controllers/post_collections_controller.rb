@@ -33,6 +33,9 @@ class PostCollectionsController < ApplicationController
       params[:post][:field_values].each do |value_label, value|
         content_json[value_label.to_sym] = value
       end
+      PostTemplate.find(params[:post][:post_template_id]).template_fields.by_type(:boolean).each do |boolean_field|
+        content_json[boolean_field.clean_label.to_sym] = params[:post][:field_values].keys.include?(boolean_field.clean_label)
+      end
       post = Post.new(post_collection_id: params[:post][:post_collection_id],
                       post_template_id: params[:post][:post_template_id],
                       user_id: params[:post][:user_id])
