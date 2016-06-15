@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
+  get 'post_collections/:id/posts/:limit' => 'post_collections#posts', as: :post_collection_posts
   resources :post_collections
   resources :post_templates
   get '/login' => 'pages#login', as: :login

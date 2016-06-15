@@ -6,7 +6,14 @@ class PostCollectionsController < ApplicationController
     @posts = @post_collection.posts.order(created_at: :desc)
     respond_to do |format|
       format.html { @posts }
-      format.json { render json: @post_collection.description_hash }
+      format.json { render json: @post_collection.build_json }
+    end
+  end
+
+  def posts
+    limit = params[:limit].to_i
+    respond_to do |format|
+      format.json { render json: @post_collection.build_posts_json(limit) }
     end
   end
 

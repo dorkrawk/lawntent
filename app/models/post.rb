@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
     content.to_h
   end
 
-  def get_content
+  def build_json
     additional_fields = {
       post_id: id,
       collection_id: post_collection.id,

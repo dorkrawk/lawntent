@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @post = post_find(params[:collection_id], params[:post_id])
     respond_to do |format|
       format.html { @post }
-      format.json { render json: @post.get_content }
+      format.json { render json: @post.build_json }
     end
   end
 

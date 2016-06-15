@@ -7,9 +7,11 @@
     .small
       post count:
       = @posts.count
-
+    %br
     = button_to "Create New Post", new_post_path(@post_collection), :class => "btn btn-lg btn-default", :method => :get
+    %br
     = button_to "Preview JSON", post_collection_path(@post_collection, format: :json), :class => "btn btn-lg btn-default", :method => :get
+    = button_to "Preview Posts JSON", post_collection_posts_path(@post_collection, 5, format: :json), :class => "btn btn-lg btn-default", :method => :get, :title => "last 5 posts"
   .col-md-9
     %ul.list-group
       - @posts.each do |post|
