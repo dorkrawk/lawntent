@@ -12,7 +12,7 @@
       = "by: #{@post.author.email}"
     %br
     = button_to "Preview JSON", post_path(@post.post_collection, @post, format: :json), :class => "btn btn-lg btn-default", :method => :get
-    = button_to "Update", nil, :class => "btn btn-lg btn-default"
+    = button_to "Update", edit_post_path(@post.post_collection, @post), :class => "btn btn-lg btn-default", :method => :get
   .col-md-9
     %table.table
       - @post.template.template_fields.each do |template_field|

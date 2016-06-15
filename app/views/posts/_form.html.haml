@@ -1,8 +1,8 @@
-= simple_form_for @post, url: post_collections_create_post_path, html: {multipart: true} do |f|
+= simple_form_for @post, :url => "/#{@post_collection.id}/posts/#{@post.id}", html: {multipart: true} do |f|
   - @post.template.template_fields.each do |template_field|
-    = render partial: "posts/fields/#{template_field.field_type}", locals: { template_field: template_field }
+    = render partial: "posts/fields/#{template_field.field_type}", locals: { template_field: template_field, value: @post_values[template_field.clean_label] }
 
   = f.hidden_field :post_template_id, value: @post.post_template_id
   = f.hidden_field :user_id, value: @post.user_id
   = f.hidden_field :post_collection_id, value: @post.post_collection_id
-  = f.submit "Create New Post", :class => "btn btn-lg btn-default"
+  = f.submit "Save Post", :class => "btn btn-lg btn-default"

@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   resources :post_collections
   resources :post_templates
   get '/login' => 'pages#login', as: :login
-  post '/post_collections/create_post' => 'post_collections#create_post'
 
-  get '/:collection_id/posts/new' => 'posts#new', as: :new_post
+  get '/:collection_id/new_post' => 'posts#new', as: :new_post
+  post ':collection_id/posts' => 'posts#create',  as: :create_post
+  get '/:collection_id/:post_id/edit' => 'posts#edit', as: :edit_post
+  patch ':collection_id/posts/:post_id' => 'posts#update',  as: :update_post
   get '/:collection_id/:post_id' => 'posts#show', as: :post
-  get '/:collection_id/posts/:post_id/preview' => 'posts#preview', as: :post_preview
+  get '/:collection_id/:post_id/preview' => 'posts#preview', as: :post_preview
 
 
   # The priority is based upon order of creation: first created -> highest priority.

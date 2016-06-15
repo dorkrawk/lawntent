@@ -1,6 +1,7 @@
 .row
   .col-md-12
     .form_group
-      %textarea{ id: "#{template_field.clean_label}_field", name: "post[field_values][#{template_field.clean_label}]", value: template_field.try(:value)}
+      %textarea{ id: "#{template_field.clean_label}_field", name: "post[field_values][#{template_field.clean_label}]"}
+        = value
       :javascript
         var #{template_field.clean_label}_simplemde = new SimpleMDE({ element: $("##{template_field.clean_label}_field")[0], autoDownloadFontAwesome: false });

@@ -2,5 +2,6 @@
   .col-md-6
     .form_group
       %label{:for => "#{template_field.clean_label}_field"}
-        = "#{template_field.label}: "
-      = file_field_tag "#{template_field.clean_label}_field", name: "post[images][#{template_field.clean_label}]", :class => "form-control"
+        = "#{template_field.clean_label}: "
+      = file_field_tag "#{template_field.clean_label}_field", name: "post[images][#{template_field.clean_label}]", value: value["image_url"], :class => "form-control"
+      = image_tag @post.post_images.find_by(template_field_id: template_field.id).image.url(:small)

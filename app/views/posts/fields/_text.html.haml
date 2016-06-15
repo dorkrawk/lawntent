@@ -1,4 +1,4 @@
 .row
   .col-md-6
     .form_group
-      = text_field_tag "#{template_field.clean_label}_field", template_field.try(:value), name: "post[field_values][#{template_field.clean_label}]", placeholder: template_field.label, :class => "form-control"
+      = text_field_tag "#{template_field.clean_label}_field", value, name: "post[field_values][#{template_field.clean_label}]", placeholder: template_field.label, :class => "form-control"
