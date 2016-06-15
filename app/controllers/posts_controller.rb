@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       content_json = handle_boolean_fields(params, content_json, post.template)
       content_json, post_images = handle_image_fields(params, content_json, post.template)
 
-      post.content = content_json      
+      post.content = content_json
       post_save_ok = post.save
       post_save_ok = post_save_ok && post_images.map do |post_image|
         post_image.post = post
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   def update
     Post.transaction do
       post = post_find(params[:collection_id], params[:post_id])
-      content_json = build_basic_content_json(params)
+      content_json = build_basic_content_json(params, post.content_hash)
       content_json = handle_boolean_fields(params, content_json, post.template)
       content_json, post_images = handle_image_fields(params, content_json, post.template)
       post_save_ok = post.update_attributes(content: content_json)

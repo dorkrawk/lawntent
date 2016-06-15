@@ -1,8 +1,7 @@
 module PostBuilder
   extend ActiveSupport::Concern
 
-  def build_basic_content_json(params)
-    content_json = {}
+  def build_basic_content_json(params, content_json = {})
     params[:post][:field_values].each do |value_label, value|
       content_json[value_label.to_sym] = value
     end
@@ -17,6 +16,7 @@ module PostBuilder
   end
 
   def handle_image_fields(params, content_json, template)
+    return content_json, [] unless params[:post][:images]
     post_images = params[:post][:images].map do |image_field, image_field_params|
       template_field = template.template_fields.where(label: image_field).first
       post_image = PostImage.new(image: image_field_params, template_field_id: template_field.id)
