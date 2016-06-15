@@ -17,7 +17,7 @@ module PostBuilder
   end
 
   def handle_image_fields(params, content_json, template)
-    post_images = params[:post][:images].to_h.map do |image_field, image_field_params|
+    post_images = params[:post][:images].map do |image_field, image_field_params|
       template_field = template.template_fields.where(label: image_field).first
       post_image = PostImage.new(image: image_field_params, template_field_id: template_field.id)
       content_json[image_field.to_sym] = {
