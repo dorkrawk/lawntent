@@ -1,5 +1,5 @@
 class PostCollectionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :posts]
   before_action :get_post_collection, except: [:new, :create, :create_post]
 
   def show

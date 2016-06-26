@@ -21,7 +21,7 @@ class PostCollection < ActiveRecord::Base
       title: title,
       slug: slug,
       owner: owner.email,
-      template: post_template_id,
+      template_id: post_template_id,
       post_count: posts.count
     }
   end

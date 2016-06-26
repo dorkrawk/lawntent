@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get 'post_collections/:id/posts/:limit' => 'post_collections#posts', as: :post_collection_posts
-  resources :post_collections
   resources :post_templates
   get '/login' => 'pages#login', as: :login
+
+  get '/:id/posts/:limit' => 'post_collections#posts', as: :post_collection_posts
+  get '/:id' => 'post_collections#show', as: :post_collection
+  resources :post_collections, :except => ['show']
 
   get '/:collection_id/new_post' => 'posts#new', as: :new_post
   post ':collection_id/posts' => 'posts#create',  as: :create_post

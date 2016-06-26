@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include PostBuilder
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @post = post_find(params[:collection_id], params[:post_id])
