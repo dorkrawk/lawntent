@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'bootstrap-sass'
 gem "paperclip", "~> 4.3"
+gem "friendly_id"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
