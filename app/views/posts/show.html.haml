@@ -22,7 +22,7 @@
             %b= "#{template_field.label}"
           %td
             - if template_field.field_type == "image"
-              = image_tag @post.post_images.where(template_field_id: template_field.id).last.image.url(:small)
+              = image_tag @post.image_for_field(template_field).image.url(:small)
             - elsif template_field.field_type == "boolean"
               = @post.content_hash[template_field.clean_label].to_s
             - else

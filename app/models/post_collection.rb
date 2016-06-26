@@ -8,6 +8,8 @@ class PostCollection < ActiveRecord::Base
 
   validates :owner, presence: true
 
+  scope :by_owner, -> (owner) { where(owner: owner)}
+
   alias_attribute :name, :title
 
   def template

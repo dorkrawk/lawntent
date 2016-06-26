@@ -30,6 +30,7 @@ class Post < ActiveRecord::Base
     additional_fields = {
       post_id: id,
       collection_id: post_collection.id,
+      collection_slug: post_collection.slug,
       author: author.try(:email),
       created_at: created_at
     }
@@ -37,15 +38,19 @@ class Post < ActiveRecord::Base
     content_hash.merge(additional_fields)
   end
 
+  def has_field?(clean_label)
+    template.has_field?(clean_label)
+  end
+
+  def image_for_field(template_field)
+    return unless has_field?(template_field.clean_label)
+    post_images.where(template_field_id: template_field.id).last
+  end
+
   def content_must_have_template_fields
     content_fields = template.template_fields.map { |f| f.clean_label }
     unless content_hash.keys.to_set == content_fields.to_set
       errors.add(:content, "must have all template fields")
     end
-  end
-
-  def content_valid?
-    content_fields = template.template_fields.map { |f| f.label }
-    content_hash.keys == content_fields
   end
 end

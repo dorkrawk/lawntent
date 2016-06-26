@@ -6,4 +6,4 @@
       - image_url = value ? value["image_url"] : nil
       = file_field_tag "#{template_field.clean_label}_field", name: "post[images][#{template_field.clean_label}]", value: image_url, :class => "form-control"
       - if image_url
-        = image_tag @post.post_images.where(template_field_id: template_field.id).last.image.url(:small)
+        = image_tag @post.image_for_field(template_field).image.url(:small)

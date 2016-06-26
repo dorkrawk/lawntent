@@ -13,4 +13,8 @@ class PostTemplate < ActiveRecord::Base
   def used?
     post_collections.any?
   end
+
+  def has_field?(clean_label)
+    template_fields.map { |f| f.clean_label.to_sym }.include? clean_label.to_sym
+  end
 end
