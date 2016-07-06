@@ -52,5 +52,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: lawntent_production
+  database: lawntent
+  username: <%= ENV['LAWNTENT_DB_USER'] %>
+  password: <%= ENV['LAWNTENT_DB_PASSWORD'] %>
   pool: 5
