@@ -22,6 +22,7 @@ gem "friendly_id"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -34,4 +35,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'dotenv-rails'
 end
