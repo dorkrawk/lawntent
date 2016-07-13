@@ -5,6 +5,7 @@ set :application, 'lawntent'
 set :repo_url, 'https://github.com/dorkrawk/lawntent.git'
 
 # set :rvm_ruby, '2.2.0'
+set :rvm_ruby_version, '2.2.0'
 
 set :use_sudo, false
 
